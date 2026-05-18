@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ SEO -->
+<title>Reviews | Sankey Ladies PG Udupi</title>
+<meta name="description" content="Check customer reviews for Sankey Ladies PG in Udupi. Safe and comfortable accommodation for working women and students.">
+<meta name="keywords" content="PG reviews Udupi, Sankey Ladies PG reviews, girls hostel feedback Udupi">
+
+<link rel="stylesheet" href="reviews.css">
+
+<style>
+/* STAR UI */
+.star-rating {
+    font-size: 25px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating span.active {
+    color: gold;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background: #ff4d4d;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">Sankey Ladies PG</div>
+
+    <!-- ☰ MENU -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+</nav>
+
+<!-- REVIEWS -->
+<section>
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="review-container" id="reviewList"></div>
+</section>
+
+<!-- ADD REVIEW -->
+<section>
+    <h2 class="section-title">Leave a Review</h2>
+
+    <div class="review-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <!-- ⭐ STAR -->
+        <div class="star-rating" id="stars">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+        </div>
+
+        <textarea id="review" placeholder="Write your review..." required></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+    </div>
+</section>
+
+<!-- FLOAT BUTTONS -->
+<a href="https://wa.me/918971681682" class="whatsapp">💬</a>
+<a href="tel:8971681682" class="call">📞</a>
+
+<!-- SCRIPT -->
+<script>
+
+// 🔥 MENU TOGGLE
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+}
+
+let selectedRating = 0;
+
+// ⭐ SELECT STAR
+document.querySelectorAll("#stars span").forEach(star => {
+    star.addEventListener("click", function() {
+        selectedRating = this.getAttribute("data-value");
+
+        document.querySelectorAll("#stars span").forEach(s => s.classList.remove("active"));
+
+        for(let i = 0; i < selectedRating; i++) {
+            document.querySelectorAll("#stars span")[i].classList.add("active");
+        }
+    });
+});
+
+// ⭐ STAR DISPLAY
+function getStars(rating) {
+    return "★".repeat(rating) + "☆".repeat(5 - rating);
+}
+
+// ADD REVIEW
+function addReview() {
+
+    let name = document.getElementById("name").value.trim();
+    let review = document.getElementById("review").value.trim();
+
+    if(name === "" || review === "" || selectedRating == 0) {
+        alert("Please fill all fields and select rating");
+        return;
+    }
+
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+    let newReview = { name, review, rating: selectedRating };
+
+    reviews.push(newReview);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+
+    renderReviews();
+
+    // RESET
+    document.getElementById("name").value = "";
+    document.getElementById("review").value = "";
+    selectedRating = 0;
+    document.querySelectorAll("#stars span").forEach(s => s.classList.remove("active"));
+}
+
+// DELETE
+function deleteReview(index) {
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    reviews.splice(index, 1);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    renderReviews();
+}
+
+// RENDER
+function renderReviews() {
+
+    let reviewList = document.getElementById("reviewList");
+    reviewList.innerHTML = "";
+
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+    reviews.forEach((r, index) => {
+
+        let card = document.createElement("div");
+        card.className = "review-card";
+
+        card.innerHTML = `
+            <h3>${getStars(r.rating)}</h3>
+            <p>"${r.review}"</p>
+            <h4>- ${r.name}</h4>
+            <button class="delete-btn" onclick="deleteReview(${index})">Delete</button>
+        `;
+
+        reviewList.appendChild(card);
+    });
+}
+
+window.onload = renderReviews;
+
+</script>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Sankey Ladies PG</h3>
+            <p>Safe accommodation for working women & students in Udupi.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>📍 Udupi, Karnataka</p>
+            <p>📞 8971681682</p>
+            <p>📞 8971180597</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Sankey Ladies PG | All Rights Reserved
+    </div>
+</footer>
+
+</body>
+</html>

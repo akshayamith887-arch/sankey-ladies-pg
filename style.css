@@ -1,0 +1,344 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #6a0dad, #8e2de2);
+    padding: 15px 25px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* NAV LINKS */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    opacity: 0.8;
+}
+
+/* ================= MENU BUTTON ================= */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 30px 20px;
+}
+
+/* ================= TITLES ================= */
+.title {
+    text-align: center;
+    color: #6a0dad;
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.section-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 26px;
+}
+
+/* ================= CARDS ================= */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* TEXT */
+.price {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.available {
+    color: gray;
+}
+
+/* AMENITIES */
+.amenities {
+    margin: 10px 0;
+}
+
+.amenities span {
+    margin-right: 10px;
+    color: green;
+    font-size: 14px;
+}
+
+/* BUTTON */
+button,
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover,
+.btn:hover {
+    background: #d62828;
+}
+
+/* ================= FACILITIES ================= */
+#facilities {
+    text-align: center;
+}
+
+.facility-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.facility-box div {
+    background: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* ================= CONTACT ================= */
+.contact-text {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* ================= MAP ================= */
+.map {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.map iframe {
+    width: 80%;
+    height: 300px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #2c2c2c;
+    color: white;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px 20px;
+}
+
+.footer-col {
+    width: 250px;
+    margin: 10px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    margin-bottom: 10px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin: 6px 0;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.footer-col ul li a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #1a1a1a;
+    font-size: 14px;
+}
+
+/* ================= FLOAT BUTTONS ================= */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 22px;
+    padding: 12px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.call {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: red;
+    color: white;
+    font-size: 22px;
+    padding: 12px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 900px) {
+    .card {
+        width: 260px;
+    }
+
+    .map iframe {
+        width: 90%;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #6a0dad;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .map iframe {
+        width: 95%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-col {
+        width: 100%;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+}
